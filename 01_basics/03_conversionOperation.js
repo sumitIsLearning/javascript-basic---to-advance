@@ -38,10 +38,39 @@ let randomString = "";
 let randomNumbertoBool = Boolean(randomNumber);
 let randomStringtoBool = Boolean(randomString);
 
-console.log(randomNumbertoBool, randomStringtoBool);
+// console.log(randomNumbertoBool, randomStringtoBool);
 
 // 1 -> true , 0 -> false
 // "1","sumit" -> true , "" -> false // use case: you use this to check if a string variable is empty or not
 
+/***************************************Operations***********************************************/
 
+// Operations are nothing but doing some process like
+// console.log(2 + 2)
+// console.log(2 - 2)
+// console.log(2 / 2)
+// console.log(2 * 2)
+// console.log(2 % 2)
 
+// some operations may feel confusing like conversion of string to number can happen when you 
+let sum = 2 + "2";
+// console.log(sum);
+
+// you may find some tricky operations like
+console.log(+true) // => it does nothing but change the boolean to a number 
+console.log(3 * 2 % 2 / 3 + 2) // => this is a example of bad readability , and you should never write code like this rather do this
+console.log(((3 * 2) % (2/3)) + 2) // => see how readable the code is now , how easily you can understand what will happen first and next 
+// next operation is short hand method of pre -> increment and decrement and post -> increment and decrement by one , we call them prefix and postfix
+// prefix is used when you want to increment the value before its usage
+let a = 2;
+let b = ++a;
+console.log("a: " + a , "b: " + b) ;
+// (for decrement it is the same concept but it just decreases the value by one)
+
+// and postfix is used when you want to use the value first and then increment it 
+let c = 2;
+let d = c++;
+console.log("c: " + c , "d: " + d) ;
+// (for decrement it is the same concept but it just decreases the value by one)
+
+// you can learn more here - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment
