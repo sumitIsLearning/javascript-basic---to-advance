@@ -59,3 +59,37 @@ console.log(typeof myFunction2)
 
 const arr = [1 , 2 , 3];
 console.log(typeof arr)
+
+// ****************************************** Memory *********************************************
+// you don't have to worry about memory management in javascript , because javascript does it for you , it has a garbage collector which manages memory for you, but regarless of this you should know somethings about memory 
+// Memory are of two types stack and Heap
+// primitive datatypes uses stack memory 
+// and non-primitive datatypes uses Heap memory
+
+// eg. of stack 
+let num = 22
+let anotherNum = num;
+console.log(num , anotherNum) // => they both will have same value
+// now if i change the values of another num 
+anotherNum = 30;
+console.log(num , anotherNum) //=> without running this can you tell me what will happen here
+
+// eg. of Heap
+const user = {
+    name: "sumit"
+}
+
+const anotherUser = user;
+
+anotherUser.name = "Joy"
+console.log(user.name , anotherUser.name) //=> without running this can you tell me what will happen here
+
+
+
+
+
+
+
+// The answer to the above question is that for stack
+// the value of num will be same as before only the value of anotherNum will change because i case of primitive datatype the anotherNum got a copy of the num's value 
+// but incase of user and anotherUser both of their values are changed because they both point to a single value and like they get a reference of the value so we are actually changing one value 
