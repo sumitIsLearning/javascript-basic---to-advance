@@ -3,6 +3,8 @@ const arr = [0 , 1, 2, 3, 4, 5];
 const arr2 = new Array(1 , 2, 3, 4);
 console.log(arr[0], arr2[0])
 
+//property
+console.log(arr.length);
 // methods
 arr.push(6) //=> adds a argument inside the orginal array, at the end of array
 console.log(arr);
@@ -34,4 +36,26 @@ console.log(arr.splice(0 , 1 , 25)) //=> Removes elements from an array and, if 
 console.log(arr);
 
 
-console.log(arr.join(","));
+console.log(arr.join());
+
+// Array's data type is an object
+// Array can store different datatypes
+// Array is declare with [] square braces
+// Array is non-primitive so it is a reference type , also copy of an array create a shallow copy(both original and copy array point to the same reference point)
+// Array's value/items can be accessed using positive integers only
+// Array is zero based indexing , meaning its indexing starts with 0
+
+/** common and important method
+ * @push -> add one or more element at the end of the array and return the new length of the array;
+ * @pop -> removes the last element of an array and returns the element;
+ * @unshift -> adds one or more element at the front of the array and returns the new lenght of the array
+ * @shift -> removes the first of an array and returns the element
+ * @slice -> Extract a section of the calling array and returns a new array , without modifying the original array
+ * @splice -> adds and/or removes element from the calling array
+ * @join -> joins all element of an array with the given seperator into a string
+ * @map -> returns a new array containing the result of invoking a function on every element of the calling array
+ * @findIndex -> Returns the index of the first element in the array that satisfies the provided testing function, or -1 if no appropriate element was found.
+ * @find -> Returns the value of the first element in the array that satisfies the provided testing function, or -1 if no appropriate element was found.
+ * @includes -> Determines whether the calling array contains a value, returning true or false as appropriate
+ * @toSorted -> Returns a new array with the elements sorted in ascending order, without modifying the original array.
+ */
