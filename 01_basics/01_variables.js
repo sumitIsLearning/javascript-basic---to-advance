@@ -27,7 +27,7 @@ accountEmail = "Email222@gmail.com"
 */
 
 // Now you may have question regarding this - phoneNumber = 9999999990
-// the answer is simple javascript let's you do that , means that javascript let's you create a variable and store the data in memory without using any keyword , but i highly recommend not to do it because its not the proper way to declare a variable and if other programmer like you comes and see your code that if your variable is constant or normal variable
+// the answer is simple javascript let's you do that , means that javascript let's you create a variable and store the data in memory without using any keyword , but i highly recommend not to do it because its not the proper way to declare a variable and if other programmer like you comes and see your code he will not understand, if your variable is constant or normal variable
 
 /* some tips :
         1. you should not use var keyword to declare variables because its doesn't understand the concept of block scope and functional scope (if you don't understand block scope and functional scope we will discuss this in the future lessons)
