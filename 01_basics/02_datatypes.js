@@ -21,3 +21,17 @@
 
 
 // Now let try them one by one
+
+// console.log("Null is of type:" + typeof null);
+// console.log("Undefined is of type:" + typeof undefined);
+
+const str = "sumit";
+const bool = true;
+const num = 20;
+const syb = Symbol("nothing");
+const obj = {
+        key:"value"
+}
+const arr = [1 , 2 , "one","two"]
+
+console.table([typeof str , typeof bool , typeof num , typeof syb ,typeof obj ,typeof arr])
