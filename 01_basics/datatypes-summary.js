@@ -81,12 +81,11 @@ const anotherUser = user;
 anotherUser.name = "Joy"
 console.log(user.name , anotherUser.name) //=> without running this can you tell me what will happen here
 
-
-
-
-
-
-
 // The answer to the above question is that for stack
 // the value of num will be same as before only the value of anotherNum will change because i case of primitive datatype the anotherNum got a copy of the num's value 
 // but incase of user and anotherUser both of their values are changed because they both point to a single value and like they get a reference of the value so we are actually changing one value 
+
+
+// ********************** test run ***************************************/
+console.log("/**************************************/")
+console.log(5 >= true);
