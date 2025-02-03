@@ -6,7 +6,7 @@ console.log( null == 0)// => false // reason : in == loose equality comparision 
 // for undefined every comparision is false
 // you can check if you want
 console.log(undefined > 0);
-console.log(undefined == 0);
+console.log(undefined == 0);  
 console.log(undefined >= 0);
 
 // basically comparision in js is sometimes tricky so you have to check and know what operator does what 
@@ -20,3 +20,4 @@ console.log(true == 1)
 console.log("2" === 2) // => strict equality operator , it will not convert the type of the data rather it compares both datatype and value 
 // if you are wondering is there any thing for > < >= <= operator , there is nothing for now , you have carefully check the value before you compare , but sometimes it is usefull try to code and figure out yourself why is it usefull.
 
+console.log("_____________________")

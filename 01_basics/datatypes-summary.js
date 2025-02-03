@@ -11,7 +11,7 @@ const user_id = Symbol(123);
 
 
 // non-primitive datatypes
-// 1 type: Object
+// 3 type: Object , array , function
 // non-primitive datatypes are Reference-of-the-address-in-memory
 
 // const heros = ["IronMan" , "Thor" , "Bruce Banner"];
@@ -32,7 +32,7 @@ function heros() {
     console.log(heros)
 }
 
-// heros();
+console.log(typeof heros);
 
 
 // different type of function declaration
@@ -41,21 +41,18 @@ const myFunction = function() {
     console.log("variable function")
 }
 myFunction()
-console.log(typeof myFunction)
 
 function my() {
     console.log("keyword")
 }
 
 my();
-console.log(typeof my)
 
 const myFunction2 = () => {
     console.log("arrow")
 }
 
 myFunction2()
-console.log(typeof myFunction2)
 
 const arr = [1 , 2 , 3];
 console.log(typeof arr)
