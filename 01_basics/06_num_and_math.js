@@ -35,3 +35,5 @@ console.log(Math.floor(Math.random() * (max - min + 1))+ min); //=> returns valu
  3. Math.floor() => as we have already discussed before floor will return the greatest value but less than or equal to its original value , or the numeric argument it has provided;
  4.+min => this will ensure that the value doesn't exceed minimum value;
 */
+
+
