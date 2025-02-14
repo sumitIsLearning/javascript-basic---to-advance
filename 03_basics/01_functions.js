@@ -88,3 +88,14 @@ console.log(sum2());
 /**Note: learn about scopes , use google to learn about scopes
  * --> https://developer.mozilla.org/en-US/docs/Glossary/Scope
  */
+
+
+//way to take multiple arguments , when you don't know the number of arguments.(...) the operator is similar to spread but it is called rest. It depends on the use cases.
+function calculateCartPrice(...prices) {
+    return prices.reduce((total , num) => {
+        return total + num;
+    })
+}
+
+console.log("price:", calculateCartPrice(200 , 300, 500, 1000, 2000));
+
