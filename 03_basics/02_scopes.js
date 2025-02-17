@@ -86,7 +86,7 @@ const addTwo = function(num) {
     return numToInt + 2
 }
 
-//➡️ hosting is a javascript mechanisim where the function declaration and variable decalartion are moved(hoisted) to the top of their containing scope before the code execution.
+//➡️ hoisting is a javascript mechanisim where the function declaration and variable decalartion are moved(hoisted) to the top of their containing scope before the code execution.
 
 // explanation for above example
 // function declared with function keyword are hoisted that why we can call the function before initilization.
