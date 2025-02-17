@@ -21,7 +21,7 @@
 // console.log(b); // this will print "4" because b is present in global scope
 // console.log(c); // tell me what this will print.
 
-// this block scope
+// this is block scope
 if(true) {
     let a = 30;
     const b = 40;
@@ -40,4 +40,55 @@ function greeting(name) {
     
 }
 
-console.log(message); // tell me if i can access the message variable or not
+// console.log(message); // tell me if i can access the message variable or not
+
+
+// basic over view of closure
+// lexical scope(parent scope) && nested scope(child scope)
+
+function one() {
+    const username = "sumit"
+
+    function two() {
+        const website = "outreachright.com"
+        console.log(username); //✅ a child scope can access to parent scope variables. Meaning function two has access to username which is present in parent scope function one.
+    }
+
+    // console.log(website); //❌ but a parent scope has no access to the child scope variables.
+
+    // eg. Think of it like as a , child can take the ice cream of a parent but parent cannot take the ice cream of a child.
+
+    return two;
+}
+
+const three = one();
+three();
+
+//➡️ lexical scope is the scope in which a function(child) is defined and not where it is executed. It determines what variable the child function has access to depending on where it is defined in the code.
+
+//➡️ closure is when a function(parent) returns another function(child) without calling it and that function(child) has still access to the variable of its parent function scope, even after the parent function has finished executing.
+
+
+/*************** interesting thing about function ***********************/
+
+console.log(addOne(5)); //✅ you can call the function before initializing it.
+function addOne(num) {
+    let numToInt = parseInt(num);
+    if(isNaN(numToInt)) return;
+    return numToInt + 1
+}
+
+// expression way to defining function
+// console.log(addTwo(5)); //❌ you cannot call the function before initializing it.
+const addTwo = function(num) {
+    let numToInt = parseInt(num);
+    if(isNaN(numToInt)) return;
+    return numToInt + 2
+}
+
+//➡️ hosting is a javascript mechanisim where the function declaration and variable decalartion are moved(hoisted) to the top of their containing scope before the code execution.
+
+// explanation for above example
+// function declared with function keyword are hoisted that why we can call the function before initilization.
+
+// function declared with function expression are not hoisted that why we cannot call the function before initilization.
