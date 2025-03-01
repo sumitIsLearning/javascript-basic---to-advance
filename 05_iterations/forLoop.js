@@ -1,4 +1,13 @@
-//for loop
+// what are loops
+// -> Loops are control structure in programming that allow a set of instructions to be executed repeatedly until a specific condition is met. They help simplify repetitive task by avoiding code duplication.
+
+//for loop : It is used when you want to execute a block of code a known number of times. It has a clear starting point, an ending condition and an increment/decrement(updater) step between iterations.
+
+/** use cases
+ * Iterates over a sequence like numbers in a list.
+ * loop a fixed number of times
+ * pre-determined loop count
+ */
 
 // ➡️ normal print
 // for (let index = 0; index < 10; index++) {
