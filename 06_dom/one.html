@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM manipulation</title>
+    <style>
+        .bg-black {
+            background-color: rgb(22, 22, 22);
+        }
+        body{
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+        <h1 id="title" class="heading">DOM learning on chai aur code</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis consectetur alias, ea quis, optio, amet repellat earum officiis qui aliquam officia.</p>
+    </div>
+</body>
+</html>
+
+<!-- Q1. what is the difference between innerHTML and innerText and textContent -->
+<!-- 
+    1. what is innerHTML property : when you use innerHTML property , it reads both HTML markup and the text content of the element.
+
+    2. what is innerText property: This propery  focuses on the rendered text content.it returns the text as it appears on screen.It ignores any html tags.
+
+    3. what is textContent property: This propery also ignore all HTML tags and returns only the text. TextContent reads text as it is in the markup.It also returns all the text whether render or not rendered.
+ -->
+
+<!-- Q2. what is the difference between HTMLCollection and Nodelist and array -->
+<!-- 
+    1. what is HTMLCollection: An HTMLColleciton is a list of DOM Elements that matches certain criteria.example: They may have same tag name or class, or they maybe related in a specific context, like children of a particular element.
+
+    2. what is a NodeList: Like the name itself gives us a hint. Its a list of nodes. But what is node: A node is any individual element in the DOM tree. This could be elements, attributes , texts, comments and so on. // bonus info: you can use forEach method in NodeList to loop.
+
+    3. similarity : now that we know what each of them are. lets dive into their similarity: They both appears to be like an array but they are not. they have some behaviour of arrays, like - zero-based indexing , length property.
+    
+    4. difference : There are some differences you need to be aware of while working with these two. The HTMLCollection will include only element nodes (<p> , <div> , <img>) while a Nodelist will include other node types also. otherNodeTypes?? yes, there are more node types.like text node , attribute node, etc.
+
+-->
+
+<!-- Q3. what is the difference between querySelector and querySelectorAll -->
+<!-- 
+    1. querySelector: It will return only the first matching element.
+    2. querySelectorAll: It will return a NodeList of all the matching elements
+ -->
