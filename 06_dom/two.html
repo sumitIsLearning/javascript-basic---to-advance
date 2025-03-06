@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM|children & childNodes</title>
+    <style>
+        .bg-black {
+            color: white;
+            background-color:rgb(22, 22, 22);
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+
+    <script>
+        const parent = document.querySelector('.parent');
+        const ParentToArray = Array.from(parent.children); // using .children gives you a html collection of all the children present inside the parent element.
+
+        ParentToArray.forEach((el) => console.log(el.innerText)) // we are converting html collection to array to gain access to array methods.
+
+        // you can also see the childNodes
+        console.log(parent.childNodes); // gives you node list of nodes.
+        // remember previous leasons, the diff between html collection and node list
+
+        // node list is a list of nodes and what are nodes everything from a space to comments to elements and even attributes all count as a node.
+
+        console.log(parent.firstElementChild.textContent); //returns first Element child of the parent
+        console.log(parent.lastElementChild.textContent); //returns last Element child of the parent
+
+        console.log(parent.firstElementChild.nextElementSibling.textContent) // gets the next sibling element
+
+        console.log(parent.lastElementChild.previousElementSibling.textContent) // gets the next sibling element
+
+        // Next we will be learning how to create elements and attributes and add them to the DOM
+
+    </script>
+</body>
+
+</html>

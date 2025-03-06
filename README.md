@@ -1,2 +1,5 @@
-# javascript-basic---to-advance
-In this series i will be learning the javascript from basic to advance , from chai aur code (youtube channel) 
+# JavaScript Basics to Advanced  
+This repository contains my JavaScript learning journey.  
+- 🌱 Topics covered: Variables, Functions, DOM, Async JS, etc.  
+- 🚀 Goal: To master JavaScript and help others learn along the way.  
+

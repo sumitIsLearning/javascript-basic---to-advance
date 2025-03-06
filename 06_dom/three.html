@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | create Elements & add them to DOM</title>
+</head>
+<body style="background-color: rgb(22, 22, 22); color: white;">
+    <!-- here your element you created will come -->
+
+
+    <!-- js starts here -->
+    <script>
+        const divEl = document.createElement('div') // to create element you use a method of dom called createElement and pass in the name of the element as argument.
+        console.log(divEl); // in return you get a empty div element.
+
+        // Note: The element you created will not be present in your DOM(it is present in the memory), you have to explicitly add it to the dom.
+
+        // before pushing the divEl to the DOM lets add some attributes , text node and style
+
+        divEl.setAttribute("class" , "parent")
+        divEl.setAttribute("id" , "firstParent")
+        divEl.style.backgroundColor = "green"
+        divEl.innerText = "This is a div";
+
+        // you can follow the above method or
+        // divEl.className = "p-2"
+        // divEl.id = Math.round(Math.random() * 10 + 1) // don't do this one its not good , i just did it for fun. But you can use divEl.id , i don't use it because its not optimized and overwrites existing attribute.
+
+        // const textNode = document.createTextNode("This is a div");
+        // divEl.appendChild(textNode);
+        // you can follow this one or the above one.
+
+        console.log(divEl)
+
+        // Now comming to the part where we will add this to the DOM
+
+        document.body.appendChild(divEl);
+
+    </script>
+</body>
+</html>
