@@ -68,3 +68,43 @@ buttons.forEach( (button) => {
   })
 })
 ```
+## project 2
+### solution:
+``` javascript
+const form = document.querySelector("form");
+const result = document.getElementById("results");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const kg = parseInt(document.getElementById("weight").value);
+  const cm = parseInt(document.getElementById("height").value);
+
+  if (cm <= 0 || isNaN(cm)) {
+    result.textContent = `Please enter a valid height.`;
+    result.style.color = "red";
+  } else if (kg <= 0 || isNaN(kg)) {
+    result.textContent = `Please enter a valid weight.`;
+    result.style.color = "red";
+  } else {
+    const bmi = (kg / ((cm / 100) ** 2)).toFixed(1);
+    const span = document.createElement("span");
+
+    let message = `BMI: ${bmi}`;
+    if (bmi < 18.6) {
+      message += ", you are underweight";
+    } else if (bmi <= 24.9) {
+      message += ", you are in the normal range";
+    } else {
+      message += ", you are overweight";
+    }
+
+    span.textContent = message;
+    span.style.color = "green";
+    span.style.fontWeight = "600";
+
+    result.innerHTML = ""; 
+    result.appendChild(span);
+  }
+});
+
+```
