@@ -108,3 +108,20 @@ form.addEventListener("submit", (e) => {
 });
 
 ```
+## project 3
+### solution:
+
+``` javascript
+const clock = document.getElementById("clock");
+
+setInterval(newTime , 60*1000);
+
+function newTime() {
+  clock.textContent = new Date().toLocaleTimeString('en-IN', {
+    hour12:false,
+    hour:"2-digit",
+    minute:"2-digit"
+  });
+}
+newTime();
+```
