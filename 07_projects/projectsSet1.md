@@ -125,3 +125,48 @@ function newTime() {
 }
 newTime();
 ```
+## project 4
+### solution:
+``` javascript
+const form = document.querySelector(".form");
+const guessField = document.getElementById("guessField");
+const previousGuess = document.querySelector(".guesses");
+const guessRemaining = document.querySelector(".lastResult");
+const lowOrHi = document.querySelector(".lowOrHi");
+
+// Random number to guess
+const MIN = 1;
+const MAX = 100;
+const numToGuess = Math.floor(Math.random() * (MAX - MIN + 1)) + MIN;
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const userGuess = parseInt(guessField.value);
+  let guessRemain = parseInt(guessRemaining.textContent);
+
+  if (isNaN(userGuess) || userGuess < MIN || userGuess > MAX) {
+    alert("Invalid input. Please enter a number between 1 and 100.");
+  } else {
+    
+    previousGuess.textContent += ` ${userGuess}`;
+
+    guessRemaining.textContent = guessRemain - 1;
+
+    if (userGuess === numToGuess) {
+      alert("🎉 You won! The correct number was " + numToGuess);
+      location.reload();
+    } else if (guessRemain - 1 === 0) {
+      alert("😞 Game over! The correct number was " + numToGuess);
+      location.reload();
+    } else if (userGuess < numToGuess) {
+      lowOrHi.textContent = "It is higher!";
+    } else {
+      lowOrHi.textContent = "It is lower!";
+    }
+  }
+
+  guessField.value = "";
+});
+```
+
