@@ -170,3 +170,70 @@ form.addEventListener("submit", (e) => {
 });
 ```
 
+## project 5
+### solution:
+``` javascript
+console.log('Project 5');
+const insertDiv = document.getElementById("insert");
+
+window.addEventListener("keydown", (e) => {
+  insertDiv.innerHTML = `
+    <div class='color'>
+      <table>
+        <tr>
+          <th>Key</th>
+          <th>KeyCode</th>
+          <th>Code</th>
+        </tr>
+        <tr>
+          <td>${e.key ===" " ? "space" : e.key}</td>
+          <td>${e.keyCode}</td>e
+          <td>${e.code}</td>
+        </tr>
+      </table> 
+    </div>
+  `
+})
+```
+## project 6
+### solution:
+``` javascript
+const start = document.getElementById('start');
+const stop = document.getElementById('stop');
+const body = document.body;
+
+const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+let intervalId = null;
+
+function generateRandomHex() {
+  let color = '#';
+  const randomNum = () => {
+    return Math.floor(Math.random() * hex.length);
+  };
+
+  for (let i = 0; i < 6; i++) {
+    color += hex[randomNum()];
+  }
+
+  return color;
+}
+
+start.addEventListener('click', () => {
+  if (!intervalId) {
+    intervalId = setInterval(() => {
+      const randomHex = generateRandomHex();
+      body.style.backgroundColor = randomHex;
+      if (body.style.backgroundColor === 'yellow') {
+        body.style.color = 'black';
+      } else {
+        body.style.color = 'white';
+      }
+    }, 2 * 1000);
+  }
+});
+stop.addEventListener('click', () => {
+  intervalId && clearInterval(intervalId);
+  intervalId = null;
+});
+
+```
