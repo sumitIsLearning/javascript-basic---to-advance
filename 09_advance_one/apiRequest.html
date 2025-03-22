@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="import" href=".env" />
+    <style>
+      .card {
+        width: 300px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .profile {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #2b3137;
+        margin-bottom: 1.5rem;
+      }
+
+      .name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #24292e;
+        margin: 0 0 1rem 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+          Arial, sans-serif;
+      }
+
+      .followers {
+        font-size: 1.1rem;
+        color: #586069;
+        margin: 0;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #f6f8fa;
+        margin: 0;
+        padding: 2rem 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+          Arial, sans-serif;
+      }
+
+      h1 {
+        color: #24292e;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .description {
+        font-size: 0.9rem;
+        color: #586069;
+        max-width: 400px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+        font-weight: 500;
+        text-align: center;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+
+      .github-username {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border: 2px solid #e1e4e8;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        transition: all 0.2s ease-in-out;
+        background: white;
+      }
+
+      .github-username::placeholder {
+        color: #6a737d;
+        opacity: 0.8;
+      }
+
+      .github-username:focus {
+        outline: none;
+        border-color: #0366d6;
+        box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.1);
+      }
+
+      .profile-link {
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #0366d6; /* GitHub blue */
+        transition: color 0.2s ease-in-out;
+      }
+
+      .profile-link:hover {
+        color: #024ea2; /* Darker shade on hover */
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Note: check the readme of this folder -->
+    <div class="hero">
+      <h1>GitPeek</h1>
+      <p class="description">
+        A lightning-fast way to sneak a peek at any GitHub profile. Just drop a
+        username and get instant insights!
+      </p>
+    </div>
+
+    <input
+      type="url"
+      placeholder="paste github username"
+      class="github-username"
+    />
+
+    <script>
+      const input = document.querySelector(".github-username");
+      input.addEventListener("change", (e) => {
+        const { value } = e.target;
+
+        if (!value) {
+          alert("username is required");
+        } else {
+          const username = value.toLowerCase().replace(/\s/g, "");
+          createCard(username);
+        }
+
+        input.value = "";
+      });
+
+      async function createCard(username) {
+        const card = document.createElement("div");
+        const profile = document.createElement("img");
+        const name = document.createElement("p");
+        const link = document.createElement("a");
+        const followers = document.createElement("p");
+
+        card.setAttribute("class", "card");
+        profile.setAttribute("class", "profile");
+        name.setAttribute("class", "name");
+        followers.setAttribute("class", "followers");
+        link.setAttribute("href", `https://github.com/${username}/`);
+        link.setAttribute("target", "_blank");
+        link.setAttribute("class", "profile-link");
+
+        followers.innerHTML = "followers: ";
+        // get data
+        const response = await getData(username);
+
+        //populate
+        profile.src = response.avatar_url;
+        name.innerHTML = response.name;
+        followers.innerHTML += response.followers;
+
+        link.appendChild(name);
+        card.appendChild(profile);
+        card.appendChild(link);
+        card.appendChild(followers);
+
+        document.body.appendChild(card);
+      }
+
+      const cache = new Map();
+
+      async function getData(username) {
+        if (cache.has(username)) return cache.get(username);
+
+        const data = await fetchData(
+          "GET",
+          `https://api.github.com/users/${username}`
+        );
+        cache.set(username, data);
+        return data;
+      }
+
+      function fetchData(method, url, body = {}, headers = {}) {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+
+          xhr.open(method.toUpperCase(), url);
+          xhr.setRequestHeader(
+            "Authorization",
+            `Bearer <YOUR_API_KEY>`
+          );
+          xhr.responseType = "json";
+
+          // Set headers
+          for (const [key, value] of Object.entries(headers)) {
+            xhr.setRequestHeader(key, value);
+          }
+
+          // Rate limit monitoring
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              const remaining = parseInt(
+                xhr.getResponseHeader("X-RateLimit-Remaining")
+              );
+              const resetTime = parseInt(
+                xhr.getResponseHeader("X-RateLimit-Reset")
+              );
+
+              if (xhr.status === 403 && remaining === 0) {
+                const resetDate = new Date(resetTime * 1000);
+                console.log(
+                  `Rate limit exceeded. Reset at ${resetDate.toLocaleTimeString()}`
+                );
+              }
+            }
+          };
+
+          // Event handlers
+          xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve(xhr.response);
+            } else {
+              reject(new Error(`Request failed with status ${xhr.status}`));
+            }
+          };
+
+          xhr.onerror = () => reject(new Error("Network error"));
+          xhr.ontimeout = () => reject(new Error("Request timed out"));
+
+          // Handle request body
+          let requestBody = null;
+          if (method.toUpperCase() !== "GET") {
+            requestBody = JSON.stringify(body);
+            if (!headers["Content-Type"]) {
+              xhr.setRequestHeader("Content-Type", "application/json");
+            }
+          }
+
+          xhr.send(requestBody);
+        });
+      }
+    </script>
+  </body>
+</html>
