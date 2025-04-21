@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+
+    <script>
+        // class React {
+        //     constructor() {
+        //         this.library = "ReactDOM"
+        //         this.server = "http://localhost:3000/"
+
+        //         // button element access
+        //         document 
+        //             .querySelector('button')
+        //             // .addEventListener('click', this.handleClick) // this will give an error because the this context will change here to button. to solve we have to use bind.
+        //             .addEventListener('click', this.handleClick.bind(this));
+        //     }
+
+        //     handleClick() {
+        //         console.log("Button Clicked");
+        //         console.log(`server: ${this.server}`);
+        //     }
+        // }
+
+        class React {
+            constructor() {
+                this.library = "ReactDOM"
+                this.server = "http://localhost:4000/"
+
+                // button element access
+                document 
+                    .querySelector('button')
+                    // .addEventListener('click', this.handleClick) //another solution is handleClick be an arrow function.
+                    // reason: Arrow functions do not have their own this, they "borrow" it from where they were defined. So if you define an arrow function inside the constructor, it inherits the class instance's this.
+                       
+                    .addEventListener('click', this.handleClick);
+            }
+
+            handleClick = () => {
+                console.log("Button Clicked");
+                console.log(`server: ${this.server}`);
+            }
+        }
+
+        const app = new React();
+
+    </script>
+</body>
+</html>
