@@ -6,6 +6,30 @@
     <title>lexical scope and closure  </title>
 </head>
 <body>
-    
+    <button id="orange" class="btn">orange</button>
+    <button id="green" class="btn">green</button>
+
+    <script>
+        function clickHandler(color) {
+
+            return function() {
+                document.body.style.backgroundColor = `${color}`
+            }
+        }
+
+        //eg. with concept of closure
+        document.getElementById('orange').onclick = clickHandler('orange');
+        document.getElementById('green').onclick = clickHandler('green');
+
+        //eg. one way without closure but can be unoptimal
+        // const btn = document.getElementsByClassName('btn')
+        // const btnArr = Array.from(btn);
+        // btnArr.forEach((btn) => {
+        //     btn.addEventListener('click', () => {
+        //         document.body.style.backgroundColor = btn.id;
+        //     })
+        // })
+    </script>
 </body>
+
 </html>
