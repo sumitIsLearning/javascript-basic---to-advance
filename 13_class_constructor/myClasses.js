@@ -63,5 +63,3 @@ Users.prototype.getPassword = function() {
 
 const userTwo = new Users("joy", "joy@paytm.com", "124");
 console.log(`userTwo: ${userTwo.getUser()}`); 
-
-// Inheritance: we will talk about this later
