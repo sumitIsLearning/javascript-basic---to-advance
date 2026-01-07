@@ -4,7 +4,7 @@
 "use strict"; // when you say "use strict" , the interpreter starts treating all you code as newer version of js
 
 // Now lets move to the actuall part of the lesson and talk about datatypes
-// The datatypes are divided into two parts primitive datatype(system defined) and non-primitive datatypes
+// The datatypes are divided into two parts primitive datatype(system defined) and non-primitive datatypes(reference type)
 /*  7 primitive datatypes
         Number
         string
@@ -15,8 +15,9 @@
         Symbol
 */
 
-/* non-primitive datatype
+/* non-primitive datatype / reference type
         Object
+        array
 */
 
 
@@ -34,4 +35,4 @@ const obj = {
 }
 const arr = [1 , 2 , "one","two"]
 
-console.table([typeof str , typeof bool , typeof num , typeof syb ,typeof obj ,typeof arr])
+console.table([typeof str , typeof bool , typeof num , typeof syb ,typeof obj ,typeof arr, typeof null, typeof undefined])
